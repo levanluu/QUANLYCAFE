@@ -73,6 +73,7 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         pwdPassword.setFont(new java.awt.Font("Segoe UI Semilight", 0, 16)); // NOI18N
         pwdPassword.setForeground(new java.awt.Color(23, 35, 51));
+        pwdPassword.setText("123456");
         pwdPassword.setBorder(null);
         panLoginForm.add(pwdPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 118, 320, 30));
 
@@ -94,6 +95,7 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         txtUsername.setFont(new java.awt.Font("Segoe UI Semilight", 0, 16)); // NOI18N
         txtUsername.setForeground(new java.awt.Color(23, 35, 51));
+        txtUsername.setText("CONGTTTPD02658");
         txtUsername.setBorder(null);
         panLoginForm.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 48, 320, 30));
 
@@ -166,6 +168,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Đăng nhập thất bại");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
 
         }
