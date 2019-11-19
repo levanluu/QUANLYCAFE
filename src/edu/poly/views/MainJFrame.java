@@ -1,6 +1,7 @@
 package edu.poly.views;
 
 import edu.poly.models.HoaDon;
+import static edu.poly.views.MainJFrame.tblQuanLyDoUong;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
@@ -32,7 +33,7 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class MainJFrame extends javax.swing.JFrame {
-    int index = 0;
+   
     ArrayList<HoaDon> list = new ArrayList<>();
     DefaultTableModel model,model1,model2;
     private Connection conn;
@@ -474,12 +475,12 @@ public class MainJFrame extends javax.swing.JFrame {
        
         
     }
-    private void clicktable(int column){
-        UpdateProduct.txtTenMon.setText((String) model2.getValueAt(column, 1));
+   /* private void clicktable(int index){
+        UpdateProduct.txtTenMon.setText((String) model2.getValueAt(index, 1));
         UpdateProduct.txtDanhMuc.setText("2");
-          UpdateProduct.txtDonGia.setText((String) model2.getValueAt(column, 2));
+          UpdateProduct.txtDonGia.setText((String) model2.getValueAt(index, 2).toString());
  
-    }
+    }*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -514,6 +515,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         panQuanLyBan = new javax.swing.JPanel();
         txtTimBan = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -888,6 +890,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel4.setText("Click vào Tên đồ Uống để thực hiện chỉnh Sữa");
+
         javax.swing.GroupLayout panQuanLyDoUongLayout = new javax.swing.GroupLayout(panQuanLyDoUong);
         panQuanLyDoUong.setLayout(panQuanLyDoUongLayout);
         panQuanLyDoUongLayout.setHorizontalGroup(
@@ -909,7 +915,9 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                             .addComponent(txtTimMon))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         panQuanLyDoUongLayout.setVerticalGroup(
@@ -918,17 +926,18 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(panQuanLyDoUongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panQuanLyDoUongLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jLabel1)
-                        .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panQuanLyDoUongLayout.createSequentialGroup()
+                        .addComponent(jLabel1))
+                    .addGroup(panQuanLyDoUongLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panQuanLyDoUongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panQuanLyDoUongLayout.createSequentialGroup()
                                 .addComponent(txtTimMon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)))
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panQuanLyDoUongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
                 .addGroup(panQuanLyDoUongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panQuanLyDoUongLayout.createSequentialGroup()
                         .addComponent(btnThemMon, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -937,7 +946,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(btnXoaMon, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         tbpQuanLi.addTab("Quản lí đồ uống", panQuanLyDoUong);
@@ -1753,10 +1762,17 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void tblQuanLyDoUongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyDoUongMouseClicked
 
-        index = tblQuanLyDoUong.getSelectedRow();
-       this.clicktable(index);
-       new UpdateProduct().setVisible(true);
+        int row = tblQuanLyDoUong.rowAtPoint(evt.getPoint());
+        int col = tblQuanLyDoUong.columnAtPoint(evt.getPoint());
+        new UpdateProduct().setVisible(true);
+        UpdateProduct.txtTenMon.setText(tblQuanLyDoUong.getValueAt(row, col).toString());
+        UpdateProduct.txtDanhMuc.setText("1");
+        UpdateProduct.txtDonGia.setText(tblQuanLyDoUong.getValueAt(row, col+1).toString());
+
+
+
       
+     
     }//GEN-LAST:event_tblQuanLyDoUongMouseClicked
 
     private void tblQuanLyDoUongMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLyDoUongMouseEntered
@@ -1838,6 +1854,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

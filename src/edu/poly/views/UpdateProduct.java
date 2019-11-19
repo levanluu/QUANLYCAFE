@@ -1,28 +1,46 @@
 package edu.poly.views;
 
+import static edu.poly.views.MainJFrame.tblQuanLyDoUong;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class UpdateProduct extends javax.swing.JFrame {
 
+    private Connection conn;
+    
     public UpdateProduct() {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=PROJECT_JAVA;", "java", "java");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         initComponents();
         setLocationRelativeTo(null);
         setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Phanv\\"
                 + "OneDrive\\Documents\\NetBeansProjects\\QuanLyCafe\\src\\edu\\poly\\image\\logo_title.png"));
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       // loadclicktable(0);
+        
+      //  int index = tblQuanLyDoUong.getSelectedRow(); 
+
+
+       //loadclicktable(index);
          
     }
    
-   /* public void loadclicktable( int index){
-         int Row = MainJFrame.tblQuanLyDoUong.getSelectedRow();
-        txtTenMon.setText((String) (MainJFrame.tblQuanLyDoUong.getValueAt(index, 1)));
-        txtDanhMuc.setText("2");
-        txtDonGia.setText(MainJFrame.tblQuanLyDoUong.getValueAt(index, 2).toString());
+  // public void loadclicktable(int index){
+         
+    //    txtTenMon.setText((String) (MainJFrame.tblQuanLyDoUong.getValueAt(index, 1)));
+      //  txtDanhMuc.setText("2");
+        //txtDonGia.setText(MainJFrame.tblQuanLyDoUong.getValueAt(index, 2).toString());
         
-    }*/
+   //}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
