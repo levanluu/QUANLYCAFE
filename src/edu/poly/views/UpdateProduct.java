@@ -12,7 +12,17 @@ public class UpdateProduct extends javax.swing.JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Phanv\\"
                 + "OneDrive\\Documents\\NetBeansProjects\\QuanLyCafe\\src\\edu\\poly\\image\\logo_title.png"));
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       // loadclicktable(0);
+         
     }
+   
+   /* public void loadclicktable( int index){
+         int Row = MainJFrame.tblQuanLyDoUong.getSelectedRow();
+        txtTenMon.setText((String) (MainJFrame.tblQuanLyDoUong.getValueAt(index, 1)));
+        txtDanhMuc.setText("2");
+        txtDonGia.setText(MainJFrame.tblQuanLyDoUong.getValueAt(index, 2).toString());
+        
+    }*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -211,8 +221,8 @@ public class UpdateProduct extends javax.swing.JFrame {
     private javax.swing.JSeparator sptDanhMuc;
     private javax.swing.JSeparator sptDonGia;
     private javax.swing.JSeparator sptTenMon;
-    private javax.swing.JTextField txtDanhMuc;
-    private javax.swing.JTextField txtDonGia;
-    private javax.swing.JTextField txtTenMon;
+    public static javax.swing.JTextField txtDanhMuc;
+    public static javax.swing.JTextField txtDonGia;
+    public static javax.swing.JTextField txtTenMon;
     // End of variables declaration//GEN-END:variables
 }
