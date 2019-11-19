@@ -49,22 +49,6 @@
                   <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblDanhMuc" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="sptDanhMuc" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtDanhMuc" alignment="0" min="-2" pref="368" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblTenMon" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="sptTenMon" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtTenMon" alignment="0" min="-2" pref="368" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
                           <Component id="lblDonGia" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -79,6 +63,34 @@
                               </Group>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblDanhMuc" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTenMon" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="sptDanhMuc" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtDanhMuc" alignment="0" min="-2" pref="368" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="sptTenMon" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtTenMon" alignment="1" min="-2" pref="368" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtiddouong" min="-2" pref="52" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -87,14 +99,19 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="lblTitleThemMon" min="-2" pref="113" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="txtTenMon" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="lblTenMon" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTenMon" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTenMon" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="sptTenMon" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtiddouong" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="txtDanhMuc" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="lblDanhMuc" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -241,6 +258,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLuuMonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnLamMoi">
           <Properties>
@@ -258,6 +278,16 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLamMoiActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ID &#x110;&#x1ed2; U&#x1ed0;NG"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtiddouong">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

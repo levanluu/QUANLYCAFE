@@ -87,6 +87,7 @@ public class MainJFrame extends javax.swing.JFrame {
         // hiển thị id nhân viên lên txtidnhanvien
         idnhanvien();
         hienthimonQL();
+        
     }
 
     private void setColor(JPanel pane) {
@@ -1766,6 +1767,7 @@ public class MainJFrame extends javax.swing.JFrame {
         int col = tblQuanLyDoUong.columnAtPoint(evt.getPoint());
         new UpdateProduct().setVisible(true);
         UpdateProduct.txtTenMon.setText(tblQuanLyDoUong.getValueAt(row, col).toString());
+         UpdateProduct.txtiddouong.setText(tblQuanLyDoUong.getValueAt(row, col-1).toString());
         UpdateProduct.txtDanhMuc.setText("1");
         UpdateProduct.txtDonGia.setText(tblQuanLyDoUong.getValueAt(row, col+1).toString());
 

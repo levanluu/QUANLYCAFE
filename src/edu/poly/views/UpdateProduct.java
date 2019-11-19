@@ -1,14 +1,18 @@
 package edu.poly.views;
 
+import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 import static edu.poly.views.MainJFrame.tblQuanLyDoUong;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 public class UpdateProduct extends javax.swing.JFrame {
 
@@ -41,6 +45,27 @@ public class UpdateProduct extends javax.swing.JFrame {
         //txtDonGia.setText(MainJFrame.tblQuanLyDoUong.getValueAt(index, 2).toString());
         
    //}
+     public void capnhat(){
+        if (txtTenMon.getText().equals("")||txtDonGia.getText().equals("")) {
+           JOptionPane.showMessageDialog(this,"không được để trống ");
+        }else{
+            try {
+                String tenduong=txtiddouong.getText();
+                String sql="UPDATE DOUONG SET TENDOUONG=?,DONGIA=? WHERE IDDOUONG='"+txtiddouong.getText()+"'";
+                 PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, txtTenMon.getText());
+             ps.setString(2, txtDonGia.getText());
+             ps.executeUpdate();
+             JOptionPane.showMessageDialog(this,"cập nhật thành công");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            this.dispose();
+          
+          
+        }
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -59,6 +84,8 @@ public class UpdateProduct extends javax.swing.JFrame {
         sptDonGia = new javax.swing.JSeparator();
         btnLuuMon = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtiddouong = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sửa món");
@@ -101,6 +128,11 @@ public class UpdateProduct extends javax.swing.JFrame {
         btnLuuMon.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnLuuMon.setForeground(new java.awt.Color(255, 255, 255));
         btnLuuMon.setText("Lưu");
+        btnLuuMon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuMonActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setBackground(new java.awt.Color(23, 35, 51));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -112,6 +144,8 @@ public class UpdateProduct extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("ID ĐỒ UỐNG");
+
         javax.swing.GroupLayout panBackgoundThemMonLayout = new javax.swing.GroupLayout(panBackgoundThemMon);
         panBackgoundThemMon.setLayout(panBackgoundThemMonLayout);
         panBackgoundThemMonLayout.setHorizontalGroup(
@@ -120,18 +154,6 @@ public class UpdateProduct extends javax.swing.JFrame {
             .addGroup(panBackgoundThemMonLayout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(panBackgoundThemMonLayout.createSequentialGroup()
-                        .addComponent(lblDanhMuc)
-                        .addGap(40, 40, 40)
-                        .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(sptDanhMuc)
-                            .addComponent(txtDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panBackgoundThemMonLayout.createSequentialGroup()
-                        .addComponent(lblTenMon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(sptTenMon)
-                            .addComponent(txtTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panBackgoundThemMonLayout.createSequentialGroup()
                         .addComponent(lblDonGia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,19 +164,42 @@ public class UpdateProduct extends javax.swing.JFrame {
                                 .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(sptDonGia)
-                                .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panBackgoundThemMonLayout.createSequentialGroup()
+                        .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDanhMuc)
+                            .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(lblTenMon)))
+                        .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panBackgoundThemMonLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sptDanhMuc)
+                                        .addComponent(txtDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sptTenMon)
+                                        .addComponent(txtTenMon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(panBackgoundThemMonLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(txtiddouong, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         panBackgoundThemMonLayout.setVerticalGroup(
             panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBackgoundThemMonLayout.createSequentialGroup()
                 .addComponent(lblTitleThemMon, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(48, 48, 48)
                 .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTenMon))
-                .addGap(2, 2, 2)
+                    .addComponent(lblTenMon)
+                    .addComponent(txtTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sptTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(6, 6, 6)
+                .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtiddouong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panBackgoundThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDanhMuc))
@@ -194,6 +239,12 @@ public class UpdateProduct extends javax.swing.JFrame {
         txtTenMon.requestFocus();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
+    private void btnLuuMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuMonActionPerformed
+        // TODO add your handling code here:
+        capnhat();
+    }//GEN-LAST:event_btnLuuMonActionPerformed
+
+   
     public static void main(String args[]) {
 
         try {
@@ -231,6 +282,7 @@ public class UpdateProduct extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnLuuMon;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDanhMuc;
     private javax.swing.JLabel lblDonGia;
     private javax.swing.JLabel lblTenMon;
@@ -242,5 +294,6 @@ public class UpdateProduct extends javax.swing.JFrame {
     public static javax.swing.JTextField txtDanhMuc;
     public static javax.swing.JTextField txtDonGia;
     public static javax.swing.JTextField txtTenMon;
+    public static javax.swing.JTextField txtiddouong;
     // End of variables declaration//GEN-END:variables
 }
