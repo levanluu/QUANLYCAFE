@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 public class LoginJFrame extends javax.swing.JFrame {
 
@@ -14,7 +13,7 @@ public class LoginJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Phanv\\"
-                + "OneDrive\\Documents\\NetBeansProjects\\QuanLyCafe\\src\\edu\\poly\\image\\logo_title.png"));
+                + "OneDrive\\Documents\\NetBeansProjects\\QuanLyCafe_1\\src\\edu\\poly\\image\\logo_title.png"));
     }
 
     @SuppressWarnings("unchecked")
@@ -33,8 +32,8 @@ public class LoginJFrame extends javax.swing.JFrame {
         chkShowPassword = new javax.swing.JCheckBox();
         lblLienhe = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        btnThoat = new java.awt.Button();
-        btnDangNhap = new java.awt.Button();
+        btnOut = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập hệ thống");
@@ -73,7 +72,7 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         pwdPassword.setFont(new java.awt.Font("Segoe UI Semilight", 0, 16)); // NOI18N
         pwdPassword.setForeground(new java.awt.Color(23, 35, 51));
-        pwdPassword.setText("123456");
+        pwdPassword.setText("0123456");
         pwdPassword.setBorder(null);
         panLoginForm.add(pwdPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 118, 320, 30));
 
@@ -95,33 +94,31 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         txtUsername.setFont(new java.awt.Font("Segoe UI Semilight", 0, 16)); // NOI18N
         txtUsername.setForeground(new java.awt.Color(23, 35, 51));
-        txtUsername.setText("CONGTTTPD02658");
+        txtUsername.setText("VUPVPD02716");
         txtUsername.setBorder(null);
         panLoginForm.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 48, 320, 30));
 
-        btnThoat.setBackground(new java.awt.Color(23, 35, 51));
-        btnThoat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnThoat.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        btnThoat.setForeground(new java.awt.Color(255, 255, 255));
-        btnThoat.setLabel("Thoát");
-        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+        btnOut.setBackground(new java.awt.Color(23, 35, 51));
+        btnOut.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnOut.setText("Thoát");
+        btnOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThoatActionPerformed(evt);
+                btnOutActionPerformed(evt);
             }
         });
-        panLoginForm.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 110, 40));
+        panLoginForm.add(btnOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 110, 40));
 
-        btnDangNhap.setBackground(new java.awt.Color(23, 35, 51));
-        btnDangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnDangNhap.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
-        btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
-        btnDangNhap.setLabel("Đăng nhập");
-        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setBackground(new java.awt.Color(23, 35, 51));
+        btnLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Đăng nhập");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangNhapActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
-        panLoginForm.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 110, 40));
+        panLoginForm.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 110, 40));
 
         getContentPane().add(panLoginForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 670, 350));
 
@@ -136,19 +133,24 @@ public class LoginJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_chkShowPasswordActionPerformed
 
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        if (txtUsername.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Không được để trống Username");
-        } else if (pwdPassword.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Không được để trống Password");
+    private void btnOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnOutActionPerformed
 
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if (txtUsername.getText().equals("") && pwdPassword.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại", "Trống", JOptionPane.WARNING_MESSAGE);
+        } else if (txtUsername.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Không được để trống Username", "Trống", JOptionPane.WARNING_MESSAGE);
+        } else if (pwdPassword.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Không được để trống Password", "Trống", JOptionPane.WARNING_MESSAGE);
         } else {
 
             try {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                String urlg = "jdbc:sqlserver://localhost:1433;databaseName=PROJECT_JAVA;";
-                Connection con = DriverManager.getConnection(urlg, "java", "java");
-                String sql = "select*from TAIKHOAN where TENDANGNHAP=? and MATKHAU=?";
+                String url = "jdbc:sqlserver://localhost:1433;databaseName=PROJECT_JAVA1;";
+                Connection con = DriverManager.getConnection(url, "JAVA", "123456");
+                String sql = "SELECT*FROM TAIKHOAN WHERE TENDANGNHAP=? AND MATKHAU=?";
 
                 PreparedStatement ps = con.prepareStatement(sql);
 
@@ -157,66 +159,36 @@ public class LoginJFrame extends javax.swing.JFrame {
 
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-
-                    JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
-
-                    new MainJFrame().setVisible(true);
-                    this.dispose();
-                    new MainJFrame().pack();
-                    new MainJFrame().setLocationRelativeTo(null);
+                    if (txtUsername.getText().equals("VUPVPD02716")) {
+                        JOptionPane.showMessageDialog(this, "Bạn đã đăng nhập quyền quản trị", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+                        this.dispose();
+                        MainJFrame main = new MainJFrame();
+                        main.setVisible(true);
+                        main.btnQuanLyDisable.setVisible(false);
+                        main.btnThongKeDisable.setVisible(false);
+                        new MainJFrame().pack();
+                    } else {
+                        this.dispose();
+                        MainJFrame main = new MainJFrame();
+                        main.setVisible(true);
+                        main.btnQuanLy.setVisible(false);
+                        main.panQuanLy.setVisible(false);
+                        main.btnThongKe.setVisible(false);
+                        main.panThongKe.setVisible(false);
+                        new MainJFrame().pack();
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Đăng nhập thất bại");
+                    JOptionPane.showMessageDialog(rootPane, "Đăng nhập thất bại", "Lỗi", JOptionPane.WARNING_MESSAGE);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-    }//GEN-LAST:event_btnDangNhapActionPerformed
-
-    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnThoatActionPerformed
-
-    public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //import JTattoo
-        try {
-            // select Look and Feel
-            UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
-            // start application
-            //new MainJFrame();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginJFrame().setVisible(true);
-            }
-        });
-
-    }
-
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnDangNhap;
-    private java.awt.Button btnThoat;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnOut;
     private javax.swing.JCheckBox chkShowPassword;
     private javax.swing.JLabel lblDangNhap;
     private javax.swing.JLabel lblImgLogin;
